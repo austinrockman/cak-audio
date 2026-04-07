@@ -16,7 +16,7 @@ Note: The GUI accepts various formats (WAV, MP3, FLAC, M4A), we recommend using 
 best quality and to avoid resampling artifacts. Other formats (not .aif) will be automatically converted but 
 may introduce quality loss or errors.
 
-Author: Austin Rockman (austin@gloame.ai) & Roopam Garg (roopam@gloame.ai)
+Author: Austin Rockman & Roopam Garg
 Date: July 2025
 """
 
