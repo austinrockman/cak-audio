@@ -12,12 +12,8 @@ Note: If the GUI appears truncated on your display, you may need to:
 - Modify the padding values in main_container (line ~365)
 - Scale the font sizes in MinimalDarkStyle class
 
-Note: The GUI accepts various formats (WAV, MP3, FLAC, M4A), we recommend using 44.1kHz 16-bit WAV files for
-best quality and to avoid resampling artifacts. Other formats (not .aif) will be automatically converted but 
+Note: The GUI accepts various formats (WAV, MP3, FLAC, M4A). Other formats (not .aif) will be automatically converted but 
 may introduce quality loss or errors.
-
-Author: Austin Rockman & Roopam Garg
-Date: July 2025
 """
 
 import torch
