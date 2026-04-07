@@ -2,7 +2,7 @@
 CAK (Conditioning Aware Kernels) Training Script
 Research code for "CAK: Emergent Audio Effects from Minimal Deep Learning"
 
-Author: Austin Rockman (austin@gloame.ai)
+Author: Austin Rockman 
 Date: July 2025
 """
 
