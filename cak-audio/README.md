@@ -13,12 +13,12 @@ The trained model is easiest to use via Hugging Face, simply upload your sample 
 ## Installation
 
 ```bash
-git clone https://github.com/gloame-ai/cak-audio.git
+git clone https://github.com/austinrockman/cak-audio.git
 cd cak-audio
 pip install -r requirements.txt
 ```
 
-Note: The GUI requires tkinter, which usually comes with Python on Mac & Windows. 
+Note: The GUI requires tkinter. 
 
 ## Usage
 Quick Start (GUI)
@@ -30,9 +30,9 @@ python cak_gui_minimal.py
 2. Adjust the texture control slider (0 = no effect, 0.3+ = increasing effect)
 3. Click "PROCESS" to apply the effect
 4. Use playback controls to compare original vs processed
-5. Save your processed audio with the "Save" button
+5. Save your processed audio with the "SAVE" button
 
-Note: Processing time depends on audio length. A 2-minute file takes ~3-4 seconds on Apple Silicon.
+Note: Processing time depends on audio length. 
 
 Training Your Own Model
 1. Prepare your dataset, drop files into a "samples" folder and run `generate_texture_samples.py` (applies random control value scalars across samples)
@@ -43,14 +43,9 @@ Training Your Own Model
 
 Note: Preprocessing code will truncate your samples to 15 seconds and apply a fade in/out to each clip. Please note the "self.gamma = 0.85" value. This is an optional midtone contrast boost applied during STFT normalization. This enhances mid-range spectral features and can be adjusted or removed based on your data characteristics. The training set was heavy in low end and gamma was used to offset potential spectral bias.
   
-Training with 200 15-second samples with our configuration takes ~2 hours for 100 epochs on Apple M4 (48GB). We have found that the model generalizes meaningfully by epoch 75, it is worth experimenting with different checkpoints to see what your model has learned along the way. Given that this is a single kernel method, learning should be fairly rapid. 
+Training with 200 15-second samples with this configuration takes ~2 hours for 100 epochs on Apple M4 (48GB). I have found that the model generalizes meaningfully by epoch 75, it is worth experimenting with different checkpoints to see what your model has learned along the way. Given that this is a single kernel method, learning should be fairly rapid.  
 
-## How It Works 
-CAK uses a simple principle:
-output = input + (learned_pattern × control)
-The "audit game" (AuGAN) trains both generator and discriminator to cooperate in verifying that the control value was correctly applied, leading to learned transformations. Users should feel free to experiment with alternate kernel configurations or attempting to encode specific attributes paired with the control value.  
-
-Like any audio effect, results vary by source material. Some audio will result in a more nuanced effect than others. We have found that transient heavy material (like percussion/drum loops) respond very well to this implementation of the CAK processor. Further, dense mid-range spectra with rich harmonic content appears to generate a smearing effect, similar to what one may find in a chorus or phaser. And at other times, the model can sound like a full blown comb filter.  
+Like any audio effect, results vary by source material. Some audio will result in a more nuanced effect than others. I have found that transient heavy material (like percussion/drum loops) respond very well to this implementation of the CAK processor. Further, dense mid-range spectra with rich harmonic content appears to generate a smearing effect, similar to what one may find in a chorus or phaser. And at other times, the model can sound like a full blown comb filter. 
 
 ## Project Structure
 ```
@@ -91,16 +86,7 @@ CUDA/MPS errors: The code automatically falls back to CPU if GPU isn't available
 MIT License - see LICENSE file for details
 
 ## Authors
-Austin Rockman (austin@gloame.ai)
-
-## Acknowledgments
-Roopam Garg, also of Gloame AI, implemented the demonstration GUI, contributed to identity preservation logic, and provided iterative feedback.
+Austin Rockman (plumgod@austinrockman.com)
 
 ## Citations
 Rockman, A. (2025). CAK: Emergent Audio Effects from Minimal Deep Learning
-
-
-
-
-
-
